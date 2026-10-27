@@ -1,0 +1,528 @@
+{
+ "what": "Near-twin overlap between published train and test splits: the percent of test rows whose closest training row has a Levenshtein ratio of 0.80 or above, and the percent with an exact match. These are overlap rates, not score inflation.",
+ "tool": "braxtonmensah/twin-check@v1, run as a remote action",
+ "twin_check_commit": "a851bc0db5ee13828366059290533e2767466fdd",
+ "run_id": "40575566686",
+ "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/40575566686",
+ "run_started_utc": "2026-10-27T20:09:58Z",
+ "record_url": "https://silicyte.com/data/leakage-measurements.json",
+ "rows": [
+  {
+   "id": "lrgb-peptides-func",
+   "section": "split",
+   "benchmark": "LRGB Peptides-func",
+   "split": "splits_random_stratified_peptide.pickle (train vs test)",
+   "source_urls": [
+    "https://www.dropbox.com/s/ol2v01usvaxbsr8/peptide_multi_class_dataset.csv.gz?dl=1",
+    "https://www.dropbox.com/s/j4zcnx2eipuo0xz/splits_random_stratified_peptide.pickle?dl=1"
+   ],
+   "source_sha256": {
+    "data": "e314f7dfb1ac46ef83fe5f5aa4fe502ad4527da633b64e6b997cb0c452511de3",
+    "split": "4573079852cce8867ad2d734c5dd22d77538bbe9f628223a8d4b3b531f6fffd0"
+   },
+   "license": "CC BY-NC 4.0",
+   "license_url": "https://github.com/vijaydwivedi75/lrgb#license-information",
+   "n_train": 10873,
+   "n_test": 2331,
+   "twin_rate_080_pct": "65.29",
+   "exact_rate_pct": "7.72",
+   "record_id": 1,
+   "record_values": {
+    "twin": "65.29",
+    "exact": "7.72",
+    "n_train": 10873,
+    "n_test": 2331
+   },
+   "status": "PASS",
+   "detail": "live record id 1: twin 65.29, exact 7.72, n_train 10873, n_test 2331",
+   "note": "The same split file serves LRGB Peptides-struct, so that leaderboard is not listed separately.",
+   "run_id": "40575566686",
+   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/40575566686",
+   "twin_check": "braxtonmensah/twin-check@v1 (a851bc0db5ee13828366059290533e2767466fdd)"
+  },
+  {
+   "id": "lrgb-peptides-func-corrected-v1",
+   "section": "split",
+   "benchmark": "LRGB Peptides-func, Silicyte corrected split v1",
+   "split": "single linkage at Levenshtein ratio 0.80, whole clusters to folds",
+   "source_urls": [
+    "https://www.dropbox.com/s/ol2v01usvaxbsr8/peptide_multi_class_dataset.csv.gz?dl=1",
+    "https://silicyte.com/data/lrgb-corrected-v1/lrgb_peptides_func_singlelinkage080.json"
+   ],
+   "source_sha256": {
+    "data": "e314f7dfb1ac46ef83fe5f5aa4fe502ad4527da633b64e6b997cb0c452511de3",
+    "split": "23b7c721d50809cb3c240b045056b3ffca09338c8fac5fa8ba8644fbe96d2048"
+   },
+   "license": "sequences CC BY-NC 4.0 (LRGB); index file published by Silicyte",
+   "license_url": "https://github.com/vijaydwivedi75/lrgb#license-information",
+   "n_train": 10873,
+   "n_test": 2331,
+   "twin_rate_080_pct": "0.00",
+   "exact_rate_pct": "0.00",
+   "record_id": null,
+   "record_values": {
+    "twin": "0.00",
+    "exact": "0.00"
+   },
+   "status": "PASS",
+   "detail": "expected value stated in the split file: twin 0.00, exact 0.00",
+   "note": "Silicyte's own split, built to read 0.00; a control, not a third-party benchmark. Expected value is the file's own rebuilt_twin_pct.",
+   "run_id": "40575566686",
+   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/40575566686",
+   "twin_check": "braxtonmensah/twin-check@v1 (a851bc0db5ee13828366059290533e2767466fdd)"
+  },
+  {
+   "id": "amplify-positives",
+   "section": "split",
+   "benchmark": "AMPlify",
+   "split": "AMP positives, train_common vs test_common",
+   "source_urls": [
+    "https://raw.githubusercontent.com/bcgsc/AMPlify/3a07713c25b8a21ef66d31d10e121989d26d9320/data/AMPlify_AMP_train_common.fa",
+    "https://raw.githubusercontent.com/bcgsc/AMPlify/3a07713c25b8a21ef66d31d10e121989d26d9320/data/AMPlify_AMP_test_common.fa"
+   ],
+   "source_sha256": {
+    "train": "a04e28f8d29d1bb4f445a6162e210e0999289c31bf93f2f13c8d2268c8dd9cdc",
+    "test": "5c6b6dc7f664035e6485454d3e1c119cc2cdc4e01655837eca47faa9b587782c"
+   },
+   "license": "GPL-3.0",
+   "license_url": "https://github.com/bcgsc/AMPlify/blob/3a07713c25b8a21ef66d31d10e121989d26d9320/LICENSE",
+   "n_train": 3338,
+   "n_test": 835,
+   "twin_rate_080_pct": "63.47",
+   "exact_rate_pct": "0.00",
+   "record_id": 2,
+   "record_values": {
+    "twin": "63.47",
+    "exact": "0.00",
+    "n_train": 3338,
+    "n_test": 835
+   },
+   "status": "PASS",
+   "detail": "live record id 2: twin 63.47, exact 0.00, n_train 3338, n_test 835",
+   "note": "",
+   "run_id": "40575566686",
+   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/40575566686",
+   "twin_check": "braxtonmensah/twin-check@v1 (a851bc0db5ee13828366059290533e2767466fdd)"
+  },
+  {
+   "id": "amplify-negatives-balanced",
+   "section": "split",
+   "benchmark": "AMPlify",
+   "split": "non-AMP negatives, train_balanced vs test_balanced",
+   "source_urls": [
+    "https://raw.githubusercontent.com/bcgsc/AMPlify/3a07713c25b8a21ef66d31d10e121989d26d9320/data/AMPlify_non_AMP_train_balanced.fa",
+    "https://raw.githubusercontent.com/bcgsc/AMPlify/3a07713c25b8a21ef66d31d10e121989d26d9320/data/AMPlify_non_AMP_test_balanced.fa"
+   ],
+   "source_sha256": {
+    "train": "02161c5d18ff8c5c8c712527fb84a9c51606a46b11ad987cd91c60306acd25a3",
+    "test": "370edd07c0da533273c2da6a725c0b6579ac4c7aa09569e1b4ae40c6e80587b4"
+   },
+   "license": "GPL-3.0",
+   "license_url": "https://github.com/bcgsc/AMPlify/blob/3a07713c25b8a21ef66d31d10e121989d26d9320/LICENSE",
+   "n_train": 3338,
+   "n_test": 835,
+   "twin_rate_080_pct": "30.18",
+   "exact_rate_pct": "0.00",
+   "record_id": 12,
+   "record_values": {
+    "twin": "30.18",
+    "exact": "0.00",
+    "n_test": 835
+   },
+   "status": "PASS",
+   "detail": "live record id 12: twin 30.18, exact 0.00, n_test 835",
+   "note": "",
+   "run_id": "40575566686",
+   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/40575566686",
+   "twin_check": "braxtonmensah/twin-check@v1 (a851bc0db5ee13828366059290533e2767466fdd)"
+  },
+  {
+   "id": "amplify-negatives-imbalanced",
+   "section": "split",
+   "benchmark": "AMPlify",
+   "split": "non-AMP negatives, train_imbalanced vs test_imbalanced",
+   "source_urls": [
+    "https://raw.githubusercontent.com/bcgsc/AMPlify/3a07713c25b8a21ef66d31d10e121989d26d9320/data/AMPlify_non_AMP_train_imbalanced.fa",
+    "https://raw.githubusercontent.com/bcgsc/AMPlify/3a07713c25b8a21ef66d31d10e121989d26d9320/data/AMPlify_non_AMP_test_imbalanced.fa"
+   ],
+   "source_sha256": {
+    "train": "b8d5e54644ff8351938103893d3c5b3bfd181e627371f6e7224220cb0269f921",
+    "test": "9248289b13d053577742151f18048afa5367e75591dfd45ced0224aad32d0ca5"
+   },
+   "license": "GPL-3.0",
+   "license_url": "https://github.com/bcgsc/AMPlify/blob/3a07713c25b8a21ef66d31d10e121989d26d9320/LICENSE",
+   "n_train": 102756,
+   "n_test": 25689,
+   "twin_rate_080_pct": "57.19",
+   "exact_rate_pct": "0.00",
+   "record_id": null,
+   "record_values": null,
+   "status": "new",
+   "detail": "not in the record",
+   "note": "",
+   "run_id": "40575566686",
+   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/40575566686",
+   "twin_check": "braxtonmensah/twin-check@v1 (a851bc0db5ee13828366059290533e2767466fdd)"
+  },
+  {
+   "id": "flip-meltome-mixed",
+   "section": "split",
+   "benchmark": "FLIP meltome",
+   "split": "mixed_split",
+   "source_urls": [
+    "https://github.com/J-SNACKKB/FLIP/raw/62cace8735f5610e2743cf06ce0f944b37fffaa6/splits/meltome/splits.zip"
+   ],
+   "source_sha256": {
+    "zip": "6da88cb6f699f814054a998e7b2a5c6796a6907de391f50aa156a5b4c1ed7152"
+   },
+   "license": "AFL-3.0",
+   "license_url": "https://github.com/J-SNACKKB/FLIP/blob/62cace8735f5610e2743cf06ce0f944b37fffaa6/LICENSE",
+   "n_train": 24817,
+   "n_test": 3134,
+   "twin_rate_080_pct": "0.29",
+   "exact_rate_pct": "0.00",
+   "record_id": 6,
+   "record_values": {
+    "twin": "0.29",
+    "exact": "0.00",
+    "n_train": 24817,
+    "n_test": 3134
+   },
+   "status": "PASS",
+   "detail": "live record id 6: twin 0.29, exact 0.00, n_train 24817, n_test 3134",
+   "note": "",
+   "run_id": "40575566686",
+   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/40575566686",
+   "twin_check": "braxtonmensah/twin-check@v1 (a851bc0db5ee13828366059290533e2767466fdd)"
+  },
+  {
+   "id": "flip-meltome-human",
+   "section": "split",
+   "benchmark": "FLIP meltome",
+   "split": "human",
+   "source_urls": [
+    "https://github.com/J-SNACKKB/FLIP/raw/62cace8735f5610e2743cf06ce0f944b37fffaa6/splits/meltome/splits.zip"
+   ],
+   "source_sha256": {
+    "zip": "6da88cb6f699f814054a998e7b2a5c6796a6907de391f50aa156a5b4c1ed7152"
+   },
+   "license": "AFL-3.0",
+   "license_url": "https://github.com/J-SNACKKB/FLIP/blob/62cace8735f5610e2743cf06ce0f944b37fffaa6/LICENSE",
+   "n_train": 8148,
+   "n_test": 1945,
+   "twin_rate_080_pct": "0.05",
+   "exact_rate_pct": "0.00",
+   "record_id": 7,
+   "record_values": {
+    "twin": "0.05",
+    "exact": "0.00"
+   },
+   "status": "PASS",
+   "detail": "live record id 7: twin 0.05, exact 0.00",
+   "note": "",
+   "run_id": "40575566686",
+   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/40575566686",
+   "twin_check": "braxtonmensah/twin-check@v1 (a851bc0db5ee13828366059290533e2767466fdd)"
+  },
+  {
+   "id": "flip-meltome-human-cell",
+   "section": "split",
+   "benchmark": "FLIP meltome",
+   "split": "human_cell",
+   "source_urls": [
+    "https://github.com/J-SNACKKB/FLIP/raw/62cace8735f5610e2743cf06ce0f944b37fffaa6/splits/meltome/splits.zip"
+   ],
+   "source_sha256": {
+    "zip": "6da88cb6f699f814054a998e7b2a5c6796a6907de391f50aa156a5b4c1ed7152"
+   },
+   "license": "AFL-3.0",
+   "license_url": "https://github.com/J-SNACKKB/FLIP/blob/62cace8735f5610e2743cf06ce0f944b37fffaa6/LICENSE",
+   "n_train": 5792,
+   "n_test": 1366,
+   "twin_rate_080_pct": "0.00",
+   "exact_rate_pct": "0.00",
+   "record_id": 8,
+   "record_values": {
+    "twin": "0.00",
+    "exact": "0.00"
+   },
+   "status": "PASS",
+   "detail": "live record id 8: twin 0.00, exact 0.00",
+   "note": "",
+   "run_id": "40575566686",
+   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/40575566686",
+   "twin_check": "braxtonmensah/twin-check@v1 (a851bc0db5ee13828366059290533e2767466fdd)"
+  },
+  {
+   "id": "flip-scl-mixed-hard",
+   "section": "split",
+   "benchmark": "FLIP scl",
+   "split": "mixed_hard",
+   "source_urls": [
+    "https://github.com/J-SNACKKB/FLIP/raw/62cace8735f5610e2743cf06ce0f944b37fffaa6/splits/scl/splits.zip"
+   ],
+   "source_sha256": {
+    "zip": "49429f73a37adb16893fcf815c133ee45908e1e24c8c58bbbf4d3a37f3e214db"
+   },
+   "license": "AFL-3.0",
+   "license_url": "https://github.com/J-SNACKKB/FLIP/blob/62cace8735f5610e2743cf06ce0f944b37fffaa6/LICENSE",
+   "n_train": 11181,
+   "n_test": 490,
+   "twin_rate_080_pct": "0.00",
+   "exact_rate_pct": "0.00",
+   "record_id": 9,
+   "record_values": {
+    "twin": "0.00",
+    "exact": "0.00"
+   },
+   "status": "PASS",
+   "detail": "live record id 9: twin 0.00, exact 0.00",
+   "note": "",
+   "run_id": "40575566686",
+   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/40575566686",
+   "twin_check": "braxtonmensah/twin-check@v1 (a851bc0db5ee13828366059290533e2767466fdd)"
+  },
+  {
+   "id": "flip-scl-mixed-soft",
+   "section": "split",
+   "benchmark": "FLIP scl",
+   "split": "mixed_soft",
+   "source_urls": [
+    "https://github.com/J-SNACKKB/FLIP/raw/62cace8735f5610e2743cf06ce0f944b37fffaa6/splits/scl/splits.zip"
+   ],
+   "source_sha256": {
+    "zip": "49429f73a37adb16893fcf815c133ee45908e1e24c8c58bbbf4d3a37f3e214db"
+   },
+   "license": "AFL-3.0",
+   "license_url": "https://github.com/J-SNACKKB/FLIP/blob/62cace8735f5610e2743cf06ce0f944b37fffaa6/LICENSE",
+   "n_train": 11181,
+   "n_test": 2768,
+   "twin_rate_080_pct": "0.94",
+   "exact_rate_pct": "0.00",
+   "record_id": null,
+   "record_values": null,
+   "status": "new",
+   "detail": "not in the record",
+   "note": "",
+   "run_id": "40575566686",
+   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/40575566686",
+   "twin_check": "braxtonmensah/twin-check@v1 (a851bc0db5ee13828366059290533e2767466fdd)"
+  },
+  {
+   "id": "flip-scl-human-hard",
+   "section": "split",
+   "benchmark": "FLIP scl",
+   "split": "human_hard",
+   "source_urls": [
+    "https://github.com/J-SNACKKB/FLIP/raw/62cace8735f5610e2743cf06ce0f944b37fffaa6/splits/scl/splits.zip"
+   ],
+   "source_sha256": {
+    "zip": "49429f73a37adb16893fcf815c133ee45908e1e24c8c58bbbf4d3a37f3e214db"
+   },
+   "license": "AFL-3.0",
+   "license_url": "https://github.com/J-SNACKKB/FLIP/blob/62cace8735f5610e2743cf06ce0f944b37fffaa6/LICENSE",
+   "n_train": 11181,
+   "n_test": 119,
+   "twin_rate_080_pct": "0.00",
+   "exact_rate_pct": "0.00",
+   "record_id": null,
+   "record_values": null,
+   "status": "new",
+   "detail": "not in the record",
+   "note": "",
+   "run_id": "40575566686",
+   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/40575566686",
+   "twin_check": "braxtonmensah/twin-check@v1 (a851bc0db5ee13828366059290533e2767466fdd)"
+  },
+  {
+   "id": "flip-scl-human-soft",
+   "section": "split",
+   "benchmark": "FLIP scl",
+   "split": "human_soft",
+   "source_urls": [
+    "https://github.com/J-SNACKKB/FLIP/raw/62cace8735f5610e2743cf06ce0f944b37fffaa6/splits/scl/splits.zip"
+   ],
+   "source_sha256": {
+    "zip": "49429f73a37adb16893fcf815c133ee45908e1e24c8c58bbbf4d3a37f3e214db"
+   },
+   "license": "AFL-3.0",
+   "license_url": "https://github.com/J-SNACKKB/FLIP/blob/62cace8735f5610e2743cf06ce0f944b37fffaa6/LICENSE",
+   "n_train": 11181,
+   "n_test": 577,
+   "twin_rate_080_pct": "0.87",
+   "exact_rate_pct": "0.00",
+   "record_id": null,
+   "record_values": null,
+   "status": "new",
+   "detail": "not in the record",
+   "note": "",
+   "run_id": "40575566686",
+   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/40575566686",
+   "twin_check": "braxtonmensah/twin-check@v1 (a851bc0db5ee13828366059290533e2767466fdd)"
+  },
+  {
+   "id": "flip-scl-balanced",
+   "section": "split",
+   "benchmark": "FLIP scl",
+   "split": "balanced",
+   "source_urls": [
+    "https://github.com/J-SNACKKB/FLIP/raw/62cace8735f5610e2743cf06ce0f944b37fffaa6/splits/scl/splits.zip"
+   ],
+   "source_sha256": {
+    "zip": "49429f73a37adb16893fcf815c133ee45908e1e24c8c58bbbf4d3a37f3e214db"
+   },
+   "license": "AFL-3.0",
+   "license_url": "https://github.com/J-SNACKKB/FLIP/blob/62cace8735f5610e2743cf06ce0f944b37fffaa6/LICENSE",
+   "n_train": 11181,
+   "n_test": 385,
+   "twin_rate_080_pct": "0.00",
+   "exact_rate_pct": "0.00",
+   "record_id": null,
+   "record_values": null,
+   "status": "new",
+   "detail": "not in the record",
+   "note": "",
+   "run_id": "40575566686",
+   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/40575566686",
+   "twin_check": "braxtonmensah/twin-check@v1 (a851bc0db5ee13828366059290533e2767466fdd)"
+  },
+  {
+   "id": "flip-scl-mixed-vs-human-2",
+   "section": "split",
+   "benchmark": "FLIP scl",
+   "split": "mixed_vs_human_2 (DeepLoc 2.0 based)",
+   "source_urls": [
+    "https://github.com/J-SNACKKB/FLIP/raw/62cace8735f5610e2743cf06ce0f944b37fffaa6/splits/scl/splits.zip"
+   ],
+   "source_sha256": {
+    "zip": "49429f73a37adb16893fcf815c133ee45908e1e24c8c58bbbf4d3a37f3e214db"
+   },
+   "license": "AFL-3.0",
+   "license_url": "https://github.com/J-SNACKKB/FLIP/blob/62cace8735f5610e2743cf06ce0f944b37fffaa6/LICENSE",
+   "n_train": 28303,
+   "n_test": 1717,
+   "twin_rate_080_pct": "0.06",
+   "exact_rate_pct": "0.00",
+   "record_id": null,
+   "record_values": null,
+   "status": "new",
+   "detail": "not in the record",
+   "note": "",
+   "run_id": "40575566686",
+   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/40575566686",
+   "twin_check": "braxtonmensah/twin-check@v1 (a851bc0db5ee13828366059290533e2767466fdd)"
+  },
+  {
+   "id": "flip-conservation-sampled",
+   "section": "split",
+   "benchmark": "FLIP conservation",
+   "split": "sampled (amino-acid sequences from sequences.fasta, split from sampled.fasta)",
+   "source_urls": [
+    "https://github.com/J-SNACKKB/FLIP/raw/62cace8735f5610e2743cf06ce0f944b37fffaa6/splits/conservation/splits.zip"
+   ],
+   "source_sha256": {
+    "zip": "9b364ba2a378a7abd9b8cf992d38c61b33dff17854fe37997760c8972ce921c5"
+   },
+   "license": "AFL-3.0",
+   "license_url": "https://github.com/J-SNACKKB/FLIP/blob/62cace8735f5610e2743cf06ce0f944b37fffaa6/LICENSE",
+   "n_train": 9947,
+   "n_test": 519,
+   "twin_rate_080_pct": "0.00",
+   "exact_rate_pct": "0.00",
+   "record_id": 10,
+   "record_values": null,
+   "status": "differs by design",
+   "detail": "The record's 0.00% was computed on the per-residue conservation label strings in sampled.fasta, not on amino-acid sequences. This row measures the sequences. The method-check row below reproduces the record's own computation.",
+   "note": "",
+   "run_id": "40575566686",
+   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/40575566686",
+   "twin_check": "braxtonmensah/twin-check@v1 (a851bc0db5ee13828366059290533e2767466fdd)"
+  },
+  {
+   "id": "flip-secondary-structure-sampled",
+   "section": "split",
+   "benchmark": "FLIP secondary_structure",
+   "split": "sampled (amino-acid sequences from sequences.fasta, split from sampled.fasta)",
+   "source_urls": [
+    "https://github.com/J-SNACKKB/FLIP/raw/62cace8735f5610e2743cf06ce0f944b37fffaa6/splits/secondary_structure/splits.zip"
+   ],
+   "source_sha256": {
+    "zip": "2e9bbbfd18a055bcac7edd4e059a6bf4bb35ca3ad8f8fa4fc3106422652a4726"
+   },
+   "license": "AFL-3.0",
+   "license_url": "https://github.com/J-SNACKKB/FLIP/blob/62cace8735f5610e2743cf06ce0f944b37fffaa6/LICENSE",
+   "n_train": 10792,
+   "n_test": 364,
+   "twin_rate_080_pct": "0.00",
+   "exact_rate_pct": "0.00",
+   "record_id": 11,
+   "record_values": null,
+   "status": "differs by design",
+   "detail": "The record's 65.38% was computed on the 3-state secondary-structure label strings (C/H/E) in sampled.fasta, not on amino-acid sequences. This row measures the sequences. The method-check row below reproduces the record's own computation.",
+   "note": "",
+   "run_id": "40575566686",
+   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/40575566686",
+   "twin_check": "braxtonmensah/twin-check@v1 (a851bc0db5ee13828366059290533e2767466fdd)"
+  }
+ ],
+ "method_checks": [
+  {
+   "id": "check-flip-conservation-record-method",
+   "section": "method_check",
+   "benchmark": "FLIP conservation",
+   "split": "sampled, LABEL strings as in the record's script (not a sequence measurement)",
+   "source_urls": [
+    "https://github.com/J-SNACKKB/FLIP/raw/62cace8735f5610e2743cf06ce0f944b37fffaa6/splits/conservation/splits.zip"
+   ],
+   "source_sha256": {
+    "zip": "9b364ba2a378a7abd9b8cf992d38c61b33dff17854fe37997760c8972ce921c5"
+   },
+   "license": "AFL-3.0",
+   "license_url": "https://github.com/J-SNACKKB/FLIP/blob/62cace8735f5610e2743cf06ce0f944b37fffaa6/LICENSE",
+   "n_train": 9947,
+   "n_test": 519,
+   "twin_rate_080_pct": "0.00",
+   "exact_rate_pct": "0.00",
+   "record_id": 10,
+   "record_values": {
+    "twin": "0.00",
+    "exact": "0.00"
+   },
+   "status": "PASS",
+   "detail": "live record id 10: twin 0.00, exact 0.00",
+   "note": "",
+   "run_id": "40575566686",
+   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/40575566686",
+   "twin_check": "braxtonmensah/twin-check@v1 (a851bc0db5ee13828366059290533e2767466fdd)"
+  },
+  {
+   "id": "check-flip-secondary-structure-record-method",
+   "section": "method_check",
+   "benchmark": "FLIP secondary_structure",
+   "split": "sampled, LABEL strings as in the record's script (not a sequence measurement)",
+   "source_urls": [
+    "https://github.com/J-SNACKKB/FLIP/raw/62cace8735f5610e2743cf06ce0f944b37fffaa6/splits/secondary_structure/splits.zip"
+   ],
+   "source_sha256": {
+    "zip": "2e9bbbfd18a055bcac7edd4e059a6bf4bb35ca3ad8f8fa4fc3106422652a4726"
+   },
+   "license": "AFL-3.0",
+   "license_url": "https://github.com/J-SNACKKB/FLIP/blob/62cace8735f5610e2743cf06ce0f944b37fffaa6/LICENSE",
+   "n_train": 10792,
+   "n_test": 364,
+   "twin_rate_080_pct": "65.38",
+   "exact_rate_pct": "0.00",
+   "record_id": 11,
+   "record_values": {
+    "twin": "65.38",
+    "exact": "0.00"
+   },
+   "status": "PASS",
+   "detail": "live record id 11: twin 65.38, exact 0.00",
+   "note": "",
+   "run_id": "40575566686",
+   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/40575566686",
+   "twin_check": "braxtonmensah/twin-check@v1 (a851bc0db5ee13828366059290533e2767466fdd)"
+  }
+ ]
+}
