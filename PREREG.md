@@ -45,3 +45,11 @@ PepBenchmark (record id 3) and AMP Scanner v2 (ids 4 and 5) are on the record bu
 stating that download and processing is allowed was found for their data files (the PepBenchData dataset card
 on Hugging Face declares no license; the AMP Scanner v2 download page states none). They can be added by PR if
 a license is identified.
+
+## Addendum 2026-10-27 (after run 40575566686): outcome of the registered rule
+Both method checks reproduced the record exactly (conservation 0.00 / 0.00; secondary_structure 65.38 / 0.00,
+n_train 10792, n_test 364). The prepare log shows `sampled.fasta` alphabets `CEH` (secondary_structure) and
+`123456789` (conservation), and `sequences.fasta` alphabets of amino acids, with 0 label/sequence length
+mismatches. The registered condition is met: record ids 10 and 11 were computed on label strings. Measured on
+amino-acid sequences, both splits read twin 0.00% and exact 0.00%. Reported to Silicyte for a public correction
+of the record and its headline claim; this board does not edit the record.
