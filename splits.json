@@ -1,0 +1,266 @@
+{
+  "$comment": "One entry per published train/test split. Every file is fetched in CI from the URL given here and checked against its sha256 before anything is measured; nothing in this list is redistributed by this repo. 'record_id' ties a row to https://silicyte.com/data/leakage-measurements.json; 'expect' holds the record's values for the cross-check. 'kind' selects the parser in scripts/prepare.py. To add a split, append an entry and open a PR (see README).",
+  "record_url": "https://silicyte.com/data/leakage-measurements.json",
+  "splits": [
+    {
+      "id": "lrgb-peptides-func",
+      "benchmark": "LRGB Peptides-func",
+      "split": "splits_random_stratified_peptide.pickle (train vs test)",
+      "kind": "lrgb_pickle",
+      "license": "CC BY-NC 4.0",
+      "license_url": "https://github.com/vijaydwivedi75/lrgb#license-information",
+      "record_id": 1,
+      "expect": {"twin": "65.29", "exact": "7.72", "n_train": 10873, "n_test": 2331},
+      "files": {
+        "data": {"url": "https://www.dropbox.com/s/ol2v01usvaxbsr8/peptide_multi_class_dataset.csv.gz?dl=1", "sha256": "e314f7dfb1ac46ef83fe5f5aa4fe502ad4527da633b64e6b997cb0c452511de3", "md5": "701eb743e899f4d793f0e13c8fa5a1b4"},
+        "split": {"url": "https://www.dropbox.com/s/j4zcnx2eipuo0xz/splits_random_stratified_peptide.pickle?dl=1", "sha256": "4573079852cce8867ad2d734c5dd22d77538bbe9f628223a8d4b3b531f6fffd0", "md5": "5a0114bdadc80b94fc7ae974f13ef061"}
+      },
+      "note": "The same split file serves LRGB Peptides-struct, so that leaderboard is not listed separately."
+    },
+    {
+      "id": "lrgb-peptides-func-corrected-v1",
+      "benchmark": "LRGB Peptides-func, Silicyte corrected split v1",
+      "split": "single linkage at Levenshtein ratio 0.80, whole clusters to folds",
+      "kind": "lrgb_json_split",
+      "license": "sequences CC BY-NC 4.0 (LRGB); index file published by Silicyte",
+      "license_url": "https://github.com/vijaydwivedi75/lrgb#license-information",
+      "record_id": null,
+      "expect": {"twin": "0.00", "exact": "0.00"},
+      "files": {
+        "data": {"url": "https://www.dropbox.com/s/ol2v01usvaxbsr8/peptide_multi_class_dataset.csv.gz?dl=1", "sha256": "e314f7dfb1ac46ef83fe5f5aa4fe502ad4527da633b64e6b997cb0c452511de3", "md5": "701eb743e899f4d793f0e13c8fa5a1b4"},
+        "split": {"url": "https://silicyte.com/data/lrgb-corrected-v1/lrgb_peptides_func_singlelinkage080.json", "sha256": "23b7c721d50809cb3c240b045056b3ffca09338c8fac5fa8ba8644fbe96d2048", "md5": "b5751ec51e80fa7fb5aba12016de81fb"}
+      },
+      "note": "Silicyte's own split, built to read 0.00; a control, not a third-party benchmark. Expected value is the file's own rebuilt_twin_pct."
+    },
+    {
+      "id": "amplify-positives",
+      "benchmark": "AMPlify",
+      "split": "AMP positives, train_common vs test_common",
+      "kind": "fasta_pair",
+      "license": "GPL-3.0",
+      "license_url": "https://github.com/bcgsc/AMPlify/blob/3a07713c25b8a21ef66d31d10e121989d26d9320/LICENSE",
+      "record_id": 2,
+      "expect": {"twin": "63.47", "exact": "0.00", "n_train": 3338, "n_test": 835},
+      "files": {
+        "train": {"url": "https://raw.githubusercontent.com/bcgsc/AMPlify/3a07713c25b8a21ef66d31d10e121989d26d9320/data/AMPlify_AMP_train_common.fa", "sha256": "a04e28f8d29d1bb4f445a6162e210e0999289c31bf93f2f13c8d2268c8dd9cdc", "md5": "67470a4ac0e0356c2f756ce2831a536d"},
+        "test": {"url": "https://raw.githubusercontent.com/bcgsc/AMPlify/3a07713c25b8a21ef66d31d10e121989d26d9320/data/AMPlify_AMP_test_common.fa", "sha256": "5c6b6dc7f664035e6485454d3e1c119cc2cdc4e01655837eca47faa9b587782c", "md5": "9251af687acaa4b55db56a656d8f33bd"}
+      }
+    },
+    {
+      "id": "amplify-negatives-balanced",
+      "benchmark": "AMPlify",
+      "split": "non-AMP negatives, train_balanced vs test_balanced",
+      "kind": "fasta_pair",
+      "license": "GPL-3.0",
+      "license_url": "https://github.com/bcgsc/AMPlify/blob/3a07713c25b8a21ef66d31d10e121989d26d9320/LICENSE",
+      "record_id": 12,
+      "expect": {"twin": "30.18", "exact": "0.00", "n_test": 835},
+      "files": {
+        "train": {"url": "https://raw.githubusercontent.com/bcgsc/AMPlify/3a07713c25b8a21ef66d31d10e121989d26d9320/data/AMPlify_non_AMP_train_balanced.fa", "sha256": "02161c5d18ff8c5c8c712527fb84a9c51606a46b11ad987cd91c60306acd25a3", "md5": "7652c9ab3b42404d8a037ed22825bd97"},
+        "test": {"url": "https://raw.githubusercontent.com/bcgsc/AMPlify/3a07713c25b8a21ef66d31d10e121989d26d9320/data/AMPlify_non_AMP_test_balanced.fa", "sha256": "370edd07c0da533273c2da6a725c0b6579ac4c7aa09569e1b4ae40c6e80587b4", "md5": "7dbc53abf6fcd66c0ad64d9e7925b476"}
+      }
+    },
+    {
+      "id": "amplify-negatives-imbalanced",
+      "benchmark": "AMPlify",
+      "split": "non-AMP negatives, train_imbalanced vs test_imbalanced",
+      "kind": "fasta_pair",
+      "license": "GPL-3.0",
+      "license_url": "https://github.com/bcgsc/AMPlify/blob/3a07713c25b8a21ef66d31d10e121989d26d9320/LICENSE",
+      "record_id": null,
+      "expect": null,
+      "files": {
+        "train": {"url": "https://raw.githubusercontent.com/bcgsc/AMPlify/3a07713c25b8a21ef66d31d10e121989d26d9320/data/AMPlify_non_AMP_train_imbalanced.fa", "sha256": "b8d5e54644ff8351938103893d3c5b3bfd181e627371f6e7224220cb0269f921", "md5": "7f4d2514935597b0c0a073bd2acbb5a6"},
+        "test": {"url": "https://raw.githubusercontent.com/bcgsc/AMPlify/3a07713c25b8a21ef66d31d10e121989d26d9320/data/AMPlify_non_AMP_test_imbalanced.fa", "sha256": "9248289b13d053577742151f18048afa5367e75591dfd45ced0224aad32d0ca5", "md5": "35c764b23c325e0ff0c5b0741ecc1f6f"}
+      }
+    },
+    {
+      "id": "flip-meltome-mixed",
+      "benchmark": "FLIP meltome",
+      "split": "mixed_split",
+      "kind": "zip_csv_set",
+      "member": "splits/mixed_split.csv",
+      "license": "AFL-3.0",
+      "license_url": "https://github.com/J-SNACKKB/FLIP/blob/62cace8735f5610e2743cf06ce0f944b37fffaa6/LICENSE",
+      "record_id": 6,
+      "expect": {"twin": "0.29", "exact": "0.00", "n_train": 24817, "n_test": 3134},
+      "files": {
+        "zip": {"url": "https://github.com/J-SNACKKB/FLIP/raw/62cace8735f5610e2743cf06ce0f944b37fffaa6/splits/meltome/splits.zip", "sha256": "6da88cb6f699f814054a998e7b2a5c6796a6907de391f50aa156a5b4c1ed7152", "md5": "72b9257e8d6714d203c64bedaef0724e"}
+      }
+    },
+    {
+      "id": "flip-meltome-human",
+      "benchmark": "FLIP meltome",
+      "split": "human",
+      "kind": "zip_csv_set",
+      "member": "splits/human.csv",
+      "license": "AFL-3.0",
+      "license_url": "https://github.com/J-SNACKKB/FLIP/blob/62cace8735f5610e2743cf06ce0f944b37fffaa6/LICENSE",
+      "record_id": 7,
+      "expect": {"twin": "0.05", "exact": "0.00"},
+      "files": {
+        "zip": {"url": "https://github.com/J-SNACKKB/FLIP/raw/62cace8735f5610e2743cf06ce0f944b37fffaa6/splits/meltome/splits.zip", "sha256": "6da88cb6f699f814054a998e7b2a5c6796a6907de391f50aa156a5b4c1ed7152", "md5": "72b9257e8d6714d203c64bedaef0724e"}
+      }
+    },
+    {
+      "id": "flip-meltome-human-cell",
+      "benchmark": "FLIP meltome",
+      "split": "human_cell",
+      "kind": "zip_csv_set",
+      "member": "splits/human_cell.csv",
+      "license": "AFL-3.0",
+      "license_url": "https://github.com/J-SNACKKB/FLIP/blob/62cace8735f5610e2743cf06ce0f944b37fffaa6/LICENSE",
+      "record_id": 8,
+      "expect": {"twin": "0.00", "exact": "0.00"},
+      "files": {
+        "zip": {"url": "https://github.com/J-SNACKKB/FLIP/raw/62cace8735f5610e2743cf06ce0f944b37fffaa6/splits/meltome/splits.zip", "sha256": "6da88cb6f699f814054a998e7b2a5c6796a6907de391f50aa156a5b4c1ed7152", "md5": "72b9257e8d6714d203c64bedaef0724e"}
+      }
+    },
+    {
+      "id": "flip-scl-mixed-hard",
+      "benchmark": "FLIP scl",
+      "split": "mixed_hard",
+      "kind": "zip_csv_set",
+      "member": "splits/mixed_hard.csv",
+      "license": "AFL-3.0",
+      "license_url": "https://github.com/J-SNACKKB/FLIP/blob/62cace8735f5610e2743cf06ce0f944b37fffaa6/LICENSE",
+      "record_id": 9,
+      "expect": {"twin": "0.00", "exact": "0.00", "n_test": 490},
+      "files": {
+        "zip": {"url": "https://github.com/J-SNACKKB/FLIP/raw/62cace8735f5610e2743cf06ce0f944b37fffaa6/splits/scl/splits.zip", "sha256": "49429f73a37adb16893fcf815c133ee45908e1e24c8c58bbbf4d3a37f3e214db", "md5": "82e91ea40653b95410284e3c4ce958c2"}
+      }
+    },
+    {
+      "id": "flip-scl-mixed-soft",
+      "benchmark": "FLIP scl",
+      "split": "mixed_soft",
+      "kind": "zip_csv_set",
+      "member": "splits/mixed_soft.csv",
+      "license": "AFL-3.0",
+      "license_url": "https://github.com/J-SNACKKB/FLIP/blob/62cace8735f5610e2743cf06ce0f944b37fffaa6/LICENSE",
+      "record_id": null,
+      "expect": null,
+      "files": {
+        "zip": {"url": "https://github.com/J-SNACKKB/FLIP/raw/62cace8735f5610e2743cf06ce0f944b37fffaa6/splits/scl/splits.zip", "sha256": "49429f73a37adb16893fcf815c133ee45908e1e24c8c58bbbf4d3a37f3e214db", "md5": "82e91ea40653b95410284e3c4ce958c2"}
+      }
+    },
+    {
+      "id": "flip-scl-human-hard",
+      "benchmark": "FLIP scl",
+      "split": "human_hard",
+      "kind": "zip_csv_set",
+      "member": "splits/human_hard.csv",
+      "license": "AFL-3.0",
+      "license_url": "https://github.com/J-SNACKKB/FLIP/blob/62cace8735f5610e2743cf06ce0f944b37fffaa6/LICENSE",
+      "record_id": null,
+      "expect": null,
+      "files": {
+        "zip": {"url": "https://github.com/J-SNACKKB/FLIP/raw/62cace8735f5610e2743cf06ce0f944b37fffaa6/splits/scl/splits.zip", "sha256": "49429f73a37adb16893fcf815c133ee45908e1e24c8c58bbbf4d3a37f3e214db", "md5": "82e91ea40653b95410284e3c4ce958c2"}
+      }
+    },
+    {
+      "id": "flip-scl-human-soft",
+      "benchmark": "FLIP scl",
+      "split": "human_soft",
+      "kind": "zip_csv_set",
+      "member": "splits/human_soft.csv",
+      "license": "AFL-3.0",
+      "license_url": "https://github.com/J-SNACKKB/FLIP/blob/62cace8735f5610e2743cf06ce0f944b37fffaa6/LICENSE",
+      "record_id": null,
+      "expect": null,
+      "files": {
+        "zip": {"url": "https://github.com/J-SNACKKB/FLIP/raw/62cace8735f5610e2743cf06ce0f944b37fffaa6/splits/scl/splits.zip", "sha256": "49429f73a37adb16893fcf815c133ee45908e1e24c8c58bbbf4d3a37f3e214db", "md5": "82e91ea40653b95410284e3c4ce958c2"}
+      }
+    },
+    {
+      "id": "flip-scl-balanced",
+      "benchmark": "FLIP scl",
+      "split": "balanced",
+      "kind": "zip_csv_set",
+      "member": "splits/balanced.csv",
+      "license": "AFL-3.0",
+      "license_url": "https://github.com/J-SNACKKB/FLIP/blob/62cace8735f5610e2743cf06ce0f944b37fffaa6/LICENSE",
+      "record_id": null,
+      "expect": null,
+      "files": {
+        "zip": {"url": "https://github.com/J-SNACKKB/FLIP/raw/62cace8735f5610e2743cf06ce0f944b37fffaa6/splits/scl/splits.zip", "sha256": "49429f73a37adb16893fcf815c133ee45908e1e24c8c58bbbf4d3a37f3e214db", "md5": "82e91ea40653b95410284e3c4ce958c2"}
+      }
+    },
+    {
+      "id": "flip-scl-mixed-vs-human-2",
+      "benchmark": "FLIP scl",
+      "split": "mixed_vs_human_2 (DeepLoc 2.0 based)",
+      "kind": "zip_csv_set",
+      "member": "splits/mixed_vs_human_2.csv",
+      "license": "AFL-3.0",
+      "license_url": "https://github.com/J-SNACKKB/FLIP/blob/62cace8735f5610e2743cf06ce0f944b37fffaa6/LICENSE",
+      "record_id": null,
+      "expect": null,
+      "files": {
+        "zip": {"url": "https://github.com/J-SNACKKB/FLIP/raw/62cace8735f5610e2743cf06ce0f944b37fffaa6/splits/scl/splits.zip", "sha256": "49429f73a37adb16893fcf815c133ee45908e1e24c8c58bbbf4d3a37f3e214db", "md5": "82e91ea40653b95410284e3c4ce958c2"}
+      }
+    },
+    {
+      "id": "flip-conservation-sampled",
+      "benchmark": "FLIP conservation",
+      "split": "sampled (amino-acid sequences from sequences.fasta, split from sampled.fasta)",
+      "kind": "flip_fasta_join",
+      "labels_member": "splits/sampled.fasta",
+      "sequences_member": "splits/sequences.fasta",
+      "license": "AFL-3.0",
+      "license_url": "https://github.com/J-SNACKKB/FLIP/blob/62cace8735f5610e2743cf06ce0f944b37fffaa6/LICENSE",
+      "record_id": 10,
+      "expect": null,
+      "differs_from_record": "The record's 0.00% was computed on the per-residue conservation label strings in sampled.fasta, not on amino-acid sequences. This row measures the sequences. The method-check row below reproduces the record's own computation.",
+      "files": {
+        "zip": {"url": "https://github.com/J-SNACKKB/FLIP/raw/62cace8735f5610e2743cf06ce0f944b37fffaa6/splits/conservation/splits.zip", "sha256": "9b364ba2a378a7abd9b8cf992d38c61b33dff17854fe37997760c8972ce921c5", "md5": "30df50a0d4d2dc7b886fd93f93aa1294"}
+      }
+    },
+    {
+      "id": "flip-secondary-structure-sampled",
+      "benchmark": "FLIP secondary_structure",
+      "split": "sampled (amino-acid sequences from sequences.fasta, split from sampled.fasta)",
+      "kind": "flip_fasta_join",
+      "labels_member": "splits/sampled.fasta",
+      "sequences_member": "splits/sequences.fasta",
+      "license": "AFL-3.0",
+      "license_url": "https://github.com/J-SNACKKB/FLIP/blob/62cace8735f5610e2743cf06ce0f944b37fffaa6/LICENSE",
+      "record_id": 11,
+      "expect": null,
+      "differs_from_record": "The record's 65.38% was computed on the 3-state secondary-structure label strings (C/H/E) in sampled.fasta, not on amino-acid sequences. This row measures the sequences. The method-check row below reproduces the record's own computation.",
+      "files": {
+        "zip": {"url": "https://github.com/J-SNACKKB/FLIP/raw/62cace8735f5610e2743cf06ce0f944b37fffaa6/splits/secondary_structure/splits.zip", "sha256": "2e9bbbfd18a055bcac7edd4e059a6bf4bb35ca3ad8f8fa4fc3106422652a4726", "md5": "9298ce249fbe83523f203b16db259541"}
+      }
+    }
+  ],
+  "method_checks": [
+    {
+      "id": "check-flip-conservation-record-method",
+      "benchmark": "FLIP conservation",
+      "split": "sampled, LABEL strings as in the record's script (not a sequence measurement)",
+      "kind": "flip_fasta_labels",
+      "labels_member": "splits/sampled.fasta",
+      "license": "AFL-3.0",
+      "license_url": "https://github.com/J-SNACKKB/FLIP/blob/62cace8735f5610e2743cf06ce0f944b37fffaa6/LICENSE",
+      "record_id": 10,
+      "expect": {"twin": "0.00", "exact": "0.00"},
+      "files": {
+        "zip": {"url": "https://github.com/J-SNACKKB/FLIP/raw/62cace8735f5610e2743cf06ce0f944b37fffaa6/splits/conservation/splits.zip", "sha256": "9b364ba2a378a7abd9b8cf992d38c61b33dff17854fe37997760c8972ce921c5", "md5": "30df50a0d4d2dc7b886fd93f93aa1294"}
+      }
+    },
+    {
+      "id": "check-flip-secondary-structure-record-method",
+      "benchmark": "FLIP secondary_structure",
+      "split": "sampled, LABEL strings as in the record's script (not a sequence measurement)",
+      "kind": "flip_fasta_labels",
+      "labels_member": "splits/sampled.fasta",
+      "license": "AFL-3.0",
+      "license_url": "https://github.com/J-SNACKKB/FLIP/blob/62cace8735f5610e2743cf06ce0f944b37fffaa6/LICENSE",
+      "record_id": 11,
+      "expect": {"twin": "65.38", "exact": "0.00", "n_train": 10792, "n_test": 364},
+      "files": {
+        "zip": {"url": "https://github.com/J-SNACKKB/FLIP/raw/62cace8735f5610e2743cf06ce0f944b37fffaa6/splits/secondary_structure/splits.zip", "sha256": "2e9bbbfd18a055bcac7edd4e059a6bf4bb35ca3ad8f8fa4fc3106422652a4726", "md5": "9298ce249fbe83523f203b16db259541"}
+      }
+    }
+  ]
+}

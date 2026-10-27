@@ -1,0 +1,139 @@
+name: board
+
+# Weekly: fetch every split in splits.json from its official URL, check the pinned sha256,
+# run braxtonmensah/twin-check@v1 on it as a remote action, cross-check rows that appear in
+# Silicyte's published record, and publish board/BOARD.md, board/board.json and docs/ (Pages).
+# Pull requests run the same measurement and build the board but publish nothing.
+
+on:
+  schedule:
+    - cron: '41 7 * * 1'   # weekly, Monday 07:41 UTC
+  workflow_dispatch:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: board-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      ids: ${{ steps.ids.outputs.ids }}
+      tc_sha: ${{ steps.tc.outputs.sha }}
+      started: ${{ steps.ids.outputs.started }}
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+      - name: Split ids from splits.json
+        id: ids
+        run: |
+          ids=$(jq -c '[.splits[].id] + [(.method_checks // [])[].id]' splits.json)
+          n=$(echo "$ids" | jq length)
+          dup=$(echo "$ids" | jq '(length) - (unique | length)')
+          echo "splits: $n, duplicate ids: $dup"
+          test "$dup" = "0"
+          echo "ids=$ids" >> "$GITHUB_OUTPUT"
+          echo "started=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_OUTPUT"
+      - name: Resolve the commit behind braxtonmensah/twin-check@v1
+        id: tc
+        run: |
+          sha=$(git ls-remote https://github.com/braxtonmensah/twin-check.git 'refs/tags/v1^{}' | cut -f1)
+          [ -n "$sha" ] || sha=$(git ls-remote https://github.com/braxtonmensah/twin-check.git refs/tags/v1 | cut -f1)
+          echo "twin-check v1 = $sha"
+          echo "sha=$sha" >> "$GITHUB_OUTPUT"
+
+  measure:
+    needs: plan
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    strategy:
+      fail-fast: false
+      matrix:
+        id: ${{ fromJSON(needs.plan.outputs.ids) }}
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+      - uses: actions/setup-python@e797f83bcb11b83ae66e0230d6156d7c80228e7c # v6.0.0
+        with:
+          python-version: '3.12'
+      - name: Install pinned dependencies for the download step (hash-checked)
+        run: python -m pip install --quiet --disable-pip-version-check --require-hashes --only-binary=:all: -r requirements.txt
+      - name: Fetch from the official source and check the pinned sha256
+        id: prep
+        run: python -I scripts/prepare.py "${{ matrix.id }}" "$RUNNER_TEMP/data"
+      - name: twin-check (remote action)
+        id: tc
+        uses: braxtonmensah/twin-check@v1
+        with:
+          train: ${{ steps.prep.outputs.train }}
+          test: ${{ steps.prep.outputs.test }}
+          label: ${{ matrix.id }}
+      - name: Record the action's outputs
+        env:
+          TWIN: ${{ steps.tc.outputs.twin_rate }}
+          EXACT: ${{ steps.tc.outputs.exact_rate }}
+          NTR: ${{ steps.tc.outputs.n_train }}
+          NTE: ${{ steps.tc.outputs.n_test }}
+          TC_SHA: ${{ needs.plan.outputs.tc_sha }}
+        run: |
+          mkdir -p out
+          jq -n --arg id "${{ matrix.id }}" --arg twin "$TWIN" --arg exact "$EXACT" \
+            --arg n_train "$NTR" --arg n_test "$NTE" --arg tc "$TC_SHA" \
+            '{id:$id, twin_rate:$twin, exact_rate:$exact, n_train:$n_train, n_test:$n_test, twin_check_sha:$tc}' > out/result.json
+          cp "$RUNNER_TEMP/data/meta.json" out/meta.json
+          cp .twin-check/record.json out/twin-check-record.json
+          cat out/result.json
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        with:
+          name: result-${{ matrix.id }}
+          path: out/
+
+  publish:
+    needs: [plan, measure]
+    if: always() && needs.plan.result == 'success'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+      - uses: actions/setup-python@e797f83bcb11b83ae66e0230d6156d7c80228e7c # v6.0.0
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7.0.0
+        with:
+          path: art
+      - name: Build the board and cross-check against the live record
+        env:
+          TWIN_CHECK_SHA: ${{ needs.plan.outputs.tc_sha }}
+          RUN_STARTED: ${{ needs.plan.outputs.started }}
+        run: python -I scripts/build_board.py art out
+      - name: Stop here if any row failed (the last passing board stays published)
+        run: |
+          cat out/status.json
+          test "$(jq '.fails | length' out/status.json)" = "0"
+          test "${{ needs.measure.result }}" = "success"
+      - name: Commit board/ and docs/ to main
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        env:
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -e
+          mkdir -p board docs
+          cp out/BOARD.md out/board.json board/
+          cp out/index.html out/board.json docs/
+          touch docs/.nojekyll
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add board docs
+          if git diff --cached --quiet; then echo "board unchanged"; else
+            git commit -q -m "board from $RUN_URL"
+            git push origin HEAD:main
+          fi
+      - name: Request a Pages build
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" || echo "Pages build request not accepted; the push itself also triggers one"
