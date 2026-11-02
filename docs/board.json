@@ -2,9 +2,9 @@
  "what": "Near-twin overlap between published train and test splits: the percent of test rows whose closest training row has a Levenshtein ratio of 0.80 or above, and the percent with an exact match. These are overlap rates, not score inflation.",
  "tool": "braxtonmensah/twin-check@v1, run as a remote action",
  "twin_check_commit": "a851bc0db5ee13828366059290533e2767466fdd",
- "run_id": "40575566686",
- "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/40575566686",
- "run_started_utc": "2026-10-27T20:09:58Z",
+ "run_id": "41491246758",
+ "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/41491246758",
+ "run_started_utc": "2026-11-02T17:26:51Z",
  "record_url": "https://silicyte.com/data/leakage-measurements.json",
  "rows": [
   {
@@ -36,8 +36,8 @@
    "status": "PASS",
    "detail": "live record id 1: twin 65.29, exact 7.72, n_train 10873, n_test 2331",
    "note": "The same split file serves LRGB Peptides-struct, so that leaderboard is not listed separately.",
-   "run_id": "40575566686",
-   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/40575566686",
+   "run_id": "41491246758",
+   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/41491246758",
    "twin_check": "braxtonmensah/twin-check@v1 (a851bc0db5ee13828366059290533e2767466fdd)"
   },
   {
@@ -67,8 +67,8 @@
    "status": "PASS",
    "detail": "expected value stated in the split file: twin 0.00, exact 0.00",
    "note": "Silicyte's own split, built to read 0.00; a control, not a third-party benchmark. Expected value is the file's own rebuilt_twin_pct.",
-   "run_id": "40575566686",
-   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/40575566686",
+   "run_id": "41491246758",
+   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/41491246758",
    "twin_check": "braxtonmensah/twin-check@v1 (a851bc0db5ee13828366059290533e2767466fdd)"
   },
   {
@@ -100,8 +100,8 @@
    "status": "PASS",
    "detail": "live record id 2: twin 63.47, exact 0.00, n_train 3338, n_test 835",
    "note": "",
-   "run_id": "40575566686",
-   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/40575566686",
+   "run_id": "41491246758",
+   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/41491246758",
    "twin_check": "braxtonmensah/twin-check@v1 (a851bc0db5ee13828366059290533e2767466fdd)"
   },
   {
@@ -132,8 +132,8 @@
    "status": "PASS",
    "detail": "live record id 12: twin 30.18, exact 0.00, n_test 835",
    "note": "",
-   "run_id": "40575566686",
-   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/40575566686",
+   "run_id": "41491246758",
+   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/41491246758",
    "twin_check": "braxtonmensah/twin-check@v1 (a851bc0db5ee13828366059290533e2767466fdd)"
   },
   {
@@ -160,8 +160,8 @@
    "status": "new",
    "detail": "not in the record",
    "note": "",
-   "run_id": "40575566686",
-   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/40575566686",
+   "run_id": "41491246758",
+   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/41491246758",
    "twin_check": "braxtonmensah/twin-check@v1 (a851bc0db5ee13828366059290533e2767466fdd)"
   },
   {
@@ -191,8 +191,8 @@
    "status": "PASS",
    "detail": "live record id 6: twin 0.29, exact 0.00, n_train 24817, n_test 3134",
    "note": "",
-   "run_id": "40575566686",
-   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/40575566686",
+   "run_id": "41491246758",
+   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/41491246758",
    "twin_check": "braxtonmensah/twin-check@v1 (a851bc0db5ee13828366059290533e2767466fdd)"
   },
   {
@@ -220,8 +220,8 @@
    "status": "PASS",
    "detail": "live record id 7: twin 0.05, exact 0.00",
    "note": "",
-   "run_id": "40575566686",
-   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/40575566686",
+   "run_id": "41491246758",
+   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/41491246758",
    "twin_check": "braxtonmensah/twin-check@v1 (a851bc0db5ee13828366059290533e2767466fdd)"
   },
   {
@@ -249,8 +249,8 @@
    "status": "PASS",
    "detail": "live record id 8: twin 0.00, exact 0.00",
    "note": "",
-   "run_id": "40575566686",
-   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/40575566686",
+   "run_id": "41491246758",
+   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/41491246758",
    "twin_check": "braxtonmensah/twin-check@v1 (a851bc0db5ee13828366059290533e2767466fdd)"
   },
   {
@@ -278,8 +278,8 @@
    "status": "PASS",
    "detail": "live record id 9: twin 0.00, exact 0.00",
    "note": "",
-   "run_id": "40575566686",
-   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/40575566686",
+   "run_id": "41491246758",
+   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/41491246758",
    "twin_check": "braxtonmensah/twin-check@v1 (a851bc0db5ee13828366059290533e2767466fdd)"
   },
   {
@@ -304,8 +304,8 @@
    "status": "new",
    "detail": "not in the record",
    "note": "",
-   "run_id": "40575566686",
-   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/40575566686",
+   "run_id": "41491246758",
+   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/41491246758",
    "twin_check": "braxtonmensah/twin-check@v1 (a851bc0db5ee13828366059290533e2767466fdd)"
   },
   {
@@ -330,8 +330,8 @@
    "status": "new",
    "detail": "not in the record",
    "note": "",
-   "run_id": "40575566686",
-   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/40575566686",
+   "run_id": "41491246758",
+   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/41491246758",
    "twin_check": "braxtonmensah/twin-check@v1 (a851bc0db5ee13828366059290533e2767466fdd)"
   },
   {
@@ -356,8 +356,8 @@
    "status": "new",
    "detail": "not in the record",
    "note": "",
-   "run_id": "40575566686",
-   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/40575566686",
+   "run_id": "41491246758",
+   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/41491246758",
    "twin_check": "braxtonmensah/twin-check@v1 (a851bc0db5ee13828366059290533e2767466fdd)"
   },
   {
@@ -382,8 +382,8 @@
    "status": "new",
    "detail": "not in the record",
    "note": "",
-   "run_id": "40575566686",
-   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/40575566686",
+   "run_id": "41491246758",
+   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/41491246758",
    "twin_check": "braxtonmensah/twin-check@v1 (a851bc0db5ee13828366059290533e2767466fdd)"
   },
   {
@@ -408,8 +408,8 @@
    "status": "new",
    "detail": "not in the record",
    "note": "",
-   "run_id": "40575566686",
-   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/40575566686",
+   "run_id": "41491246758",
+   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/41491246758",
    "twin_check": "braxtonmensah/twin-check@v1 (a851bc0db5ee13828366059290533e2767466fdd)"
   },
   {
@@ -434,8 +434,8 @@
    "status": "differs by design",
    "detail": "The record's 0.00% was computed on the per-residue conservation label strings in sampled.fasta, not on amino-acid sequences. This row measures the sequences. The method-check row below reproduces the record's own computation.",
    "note": "",
-   "run_id": "40575566686",
-   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/40575566686",
+   "run_id": "41491246758",
+   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/41491246758",
    "twin_check": "braxtonmensah/twin-check@v1 (a851bc0db5ee13828366059290533e2767466fdd)"
   },
   {
@@ -460,8 +460,8 @@
    "status": "differs by design",
    "detail": "The record's 65.38% was computed on the 3-state secondary-structure label strings (C/H/E) in sampled.fasta, not on amino-acid sequences. This row measures the sequences. The method-check row below reproduces the record's own computation.",
    "note": "",
-   "run_id": "40575566686",
-   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/40575566686",
+   "run_id": "41491246758",
+   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/41491246758",
    "twin_check": "braxtonmensah/twin-check@v1 (a851bc0db5ee13828366059290533e2767466fdd)"
   }
  ],
@@ -491,8 +491,8 @@
    "status": "PASS",
    "detail": "live record id 10: twin 0.00, exact 0.00",
    "note": "",
-   "run_id": "40575566686",
-   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/40575566686",
+   "run_id": "41491246758",
+   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/41491246758",
    "twin_check": "braxtonmensah/twin-check@v1 (a851bc0db5ee13828366059290533e2767466fdd)"
   },
   {
@@ -520,8 +520,8 @@
    "status": "PASS",
    "detail": "live record id 11: twin 65.38, exact 0.00",
    "note": "",
-   "run_id": "40575566686",
-   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/40575566686",
+   "run_id": "41491246758",
+   "run_url": "https://github.com/braxtonmensah/twin-check-board/actions/runs/41491246758",
    "twin_check": "braxtonmensah/twin-check@v1 (a851bc0db5ee13828366059290533e2767466fdd)"
   }
  ]
